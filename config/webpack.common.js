@@ -25,7 +25,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
  */
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'SmartSensortHouses Web App',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -292,6 +292,11 @@ module.exports = function (options) {
         /facade(\\|\/)math/,
         helpers.root('node_modules/@angular/core/src/facade/math.js')
       ),
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+      }),
     ],
 
     /*
