@@ -21,7 +21,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
+import { NotFoundComponent } from './not-found';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -44,7 +44,7 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
-    NoContentComponent
+    NotFoundComponent
   ],
   imports: [ // import Angular's modules
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
