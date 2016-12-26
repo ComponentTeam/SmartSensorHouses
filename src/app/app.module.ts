@@ -6,6 +6,11 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 /*
+ * Application modules
+ */
+import { SharedModule } from './shared/shared.module';
+
+/*
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
@@ -17,7 +22,6 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { XLarge } from './home/x-large';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -40,14 +44,14 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
-    NoContentComponent,
-    XLarge
+    NoContentComponent
   ],
   imports: [ // import Angular's modules
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    SharedModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
