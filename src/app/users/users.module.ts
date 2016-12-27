@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { SignInComponent } from './components';
 import { UserService } from './services';
 
+import { UsersRoutingModule } from './users-routing.module';
+
 @NgModule({
-  exports: [SignInComponent, UserService],
-  declarations: [SignInComponent, UserService],
+  imports: [UsersRoutingModule],
+  declarations: [SignInComponent],
   providers: [UserService],
 })
 export class UsersModule { }
