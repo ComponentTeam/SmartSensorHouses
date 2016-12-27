@@ -1,40 +1,29 @@
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, PreloadAllModules } from '@angular/router';
-import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-
-/*
- * Application modules
- */
-import { FirebaseModule } from './firebase/firebase.module';
-import { SharedModule } from './shared/shared.module';
 
 /*
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
+
+/*
+ * Application modules
+ */
+import { FirebaseModule } from './firebase/firebase.module';
+import { NotFoundModule } from './not-found/not-found-module';
+import { HomeModule } from './home/home.module';
+
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NotFoundComponent } from './not-found';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
 ];
-
-type StoreType = {
-  state: InternalStateType,
-  restoreInputValues: () => void,
-  disposeOldHosts: () => void
-};
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -42,18 +31,16 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
-    AboutComponent,
-    HomeComponent,
-    NotFoundComponent
+    AppComponent
   ],
   imports: [ // import Angular's modules
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     BrowserModule,
     FormsModule,
     HttpModule,
     FirebaseModule,
-    SharedModule
+    HomeModule,
+    NotFoundModule,
+    AppRoutingModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
