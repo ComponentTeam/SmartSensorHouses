@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 /*
  * Application modules
  */
+import { ToasterModule } from 'angular2-toaster';
 import { FirebaseModule } from './firebase/firebase.module';
 import { NotFoundModule } from './not-found/not-found-module';
 import { HomeModule } from './home/home.module';
@@ -38,6 +39,7 @@ const APP_PROVIDERS = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ToasterModule,
     FirebaseModule,
     HomeModule,
     UsersModule,

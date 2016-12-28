@@ -24,8 +24,6 @@ module.exports = {
     { rel: 'manifest', href: '/assets/manifest.json' },
 
     /** <link> tags css files **/
-    { rel: 'stylesheet', href: '/assets/css/bootstrap/dist/css/bootstrap.css' },
-    { rel: 'stylesheet', href: '/assets/fonts/font-awesome/css/font-awesome.css' },
     { rel: 'stylesheet', href: '/assets/css/main.css' }
   ],
   meta: [

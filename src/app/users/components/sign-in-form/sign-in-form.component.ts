@@ -11,6 +11,7 @@ import {
   Validators
 } from '@angular/forms';
 
+import { ToasterService } from 'angular2-toaster';
 import { UserService } from '../../services';
 
 
@@ -26,7 +27,8 @@ export class SignInFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private toasterService: ToasterService
   ) {
     this.formSubmit = new EventEmitter<FormGroup>();
   }
@@ -38,14 +40,14 @@ export class SignInFormComponent implements OnInit {
     });
   }
 
-  onSignInFormSubmit() {
+  onSignInFormSubmit(submitEvent) {
     this.formSubmit.emit(this.signInForm);
 
     let formControls = this.signInForm.controls;
     this.userService.signIn(formControls['email'].value, formControls['password'].value)
       .then((data) => console.log(data))
       .catch((error) => {
-        alert(error.message);
+        this.toasterService.pop('error', 'Authorization failed', error.message);
       });
   }
 

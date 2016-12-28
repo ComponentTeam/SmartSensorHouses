@@ -119,13 +119,32 @@ module.exports = function (options) {
         },
 
         /*
+         * Inject css files to the page
+         * style loader and css loader support for *.css files
+         *
+         */
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+          include: [helpers.root('node_modules')]
+        },
+        /*
          * to string and css loader support for *.css files
          * Returns file content as string
          *
          */
         {
           test: /\.css$/,
-          use: ['to-string-loader', 'css-loader']
+          use: ['to-string-loader', 'css-loader'],
+          exclude: [helpers.root('node_modules')] //Ignore css coming from node_modules
+        },
+
+        /*
+         * Load fonts with the file loader
+         */
+        {
+          test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+          use : 'file-loader'
         },
 
         /* Raw loader support for *.html
