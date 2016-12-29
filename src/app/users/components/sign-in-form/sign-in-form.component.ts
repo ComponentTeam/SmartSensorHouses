@@ -10,25 +10,25 @@ import {
   FormBuilder,
   Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { ToasterService } from 'angular2-toaster';
 import { UserService } from '../../services';
 
 
 @Component({
   selector: 'sign-in-form',
-  providers: [UserService],
   templateUrl: './sign-in-form.component.html'
 })
 export class SignInFormComponent implements OnInit {
   @Output() public formSubmit: EventEmitter<FormGroup>;
 
   signInForm: FormGroup;
+  authError: string;
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
-    private userService: UserService,
-    private toasterService: ToasterService
+    private userService: UserService
   ) {
     this.formSubmit = new EventEmitter<FormGroup>();
   }
@@ -45,15 +45,12 @@ export class SignInFormComponent implements OnInit {
 
     let formControls = this.signInForm.controls;
     this.userService.signIn(formControls['email'].value, formControls['password'].value)
-      .then((data) => console.log(data))
+      .then((data) => {
+        this.router.navigate(['/home']);
+      })
       .catch((error) => {
-        this.toasterService.pop('error', 'Authorization failed', error.message);
+        this.authError = error.message;
       });
-  }
-
-  hasSuccess(formField: string): boolean {
-    let control: FormControl = <FormControl>this.signInForm.controls[formField];
-    return control.touched && control.valid;
   }
 
   hasError(formField: string): boolean {

@@ -6,7 +6,7 @@ import { FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 export class UserService {
   private userState: FirebaseAuthState = null;
 
-  constructor(private firebaseAuth: FirebaseAuth) {
+  constructor(public firebaseAuth: FirebaseAuth) {
     firebaseAuth.subscribe((state: FirebaseAuthState) => {
       this.userState = state;
     });
@@ -21,7 +21,8 @@ export class UserService {
   }
 
   signIn(email: string, password: string): firebase.Promise<FirebaseAuthState> {
-    return this.firebaseAuth.login({email, password});
+    return this.firebaseAuth.login({email, password})
+      .then((state: FirebaseAuthState) => this.userState = state);
   }
 
   signOut(): void {
