@@ -3,7 +3,7 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { UserService } from './users/services';
+import { AuthService } from './shared/services';
 
 /*
  * App Component
@@ -17,14 +17,14 @@ import { UserService } from './users/services';
 export class AppComponent {
   private isAuthenticated: boolean;
 
-  constructor(private userService: UserService) {
-    userService.authState.subscribe((state) => {
+  constructor(private authService: AuthService) {
+    authService.authState.subscribe((state) => {
       this.isAuthenticated = !!state;
     });
   }
 
   onSignOutClick(event: MouseEvent) {
-    this.userService.signOut();
+    this.authService.signOut();
   }
 
 }

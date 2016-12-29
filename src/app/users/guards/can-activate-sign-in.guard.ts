@@ -5,15 +5,15 @@ import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { FirebaseAuthState } from 'angularfire2';
-import { UserService } from '../services';
+import { AuthService } from '../../shared/services';
 
 
 @Injectable()
 export class CanActivateSignInGuard implements CanActivate {
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): Observable<boolean> {
-    return this.userService.authState
+    return this.authService.authState
       .map((authState: FirebaseAuthState) => {
         if (authState === null) {
           return true;

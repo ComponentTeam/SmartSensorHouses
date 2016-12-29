@@ -4,8 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 
 @Injectable()
-export class UserService {
-  private userState: FirebaseAuthState = null;
+export class AuthService {
 
   constructor(private firebaseAuth: FirebaseAuth) { }
 
@@ -14,8 +13,7 @@ export class UserService {
   }
 
   signIn(email: string, password: string): firebase.Promise<FirebaseAuthState> {
-    return this.firebaseAuth.login({email, password})
-      .then((state: FirebaseAuthState) => this.userState = state);
+    return this.firebaseAuth.login({email, password});
   }
 
   signOut(): void {

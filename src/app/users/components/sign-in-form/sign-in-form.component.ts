@@ -12,7 +12,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserService } from '../../services';
+import { AuthService } from '../../../shared/services';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class SignInFormComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private authService: AuthService
   ) {
     this.formSubmit = new EventEmitter<FormGroup>();
   }
@@ -44,7 +44,7 @@ export class SignInFormComponent implements OnInit {
     this.formSubmit.emit(this.signInForm);
 
     let formControls = this.signInForm.controls;
-    this.userService.signIn(formControls['email'].value, formControls['password'].value)
+    this.authService.signIn(formControls['email'].value, formControls['password'].value)
       .then((data) => {
         this.router.navigate(['/home']);
       })
