@@ -16,7 +16,16 @@
         <li><a href="#">Stuff</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/users/sign-in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="!isAuthenticated">
+          <a routerLink="/users/sign-in">
+            <span class="glyphicon glyphicon-log-in"></span> Sign in
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a (click)="onSignOutClick()" routerLink="/">
+            <span class="glyphicon glyphicon-log-out"></span> Sign out
+          </a>
+        </li>
       </ul>
     </div>
   </div>

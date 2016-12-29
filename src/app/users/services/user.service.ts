@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 
@@ -6,18 +7,10 @@ import { FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 export class UserService {
   private userState: FirebaseAuthState = null;
 
-  constructor(public firebaseAuth: FirebaseAuth) {
-    firebaseAuth.subscribe((state: FirebaseAuthState) => {
-      this.userState = state;
-    });
-  }
+  constructor(private firebaseAuth: FirebaseAuth) { }
 
-  get userId(): string {
-    return this.isAuthenticated ? this.userState.uid : '';
-  }
-
-  get isAuthenticated(): boolean {
-    return this.userState !== null;
+  get authState(): Observable<FirebaseAuthState> {
+    return this.firebaseAuth.asObservable();
   }
 
   signIn(email: string, password: string): firebase.Promise<FirebaseAuthState> {

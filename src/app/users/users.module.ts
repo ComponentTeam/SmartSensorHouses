@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SignInFormComponent } from './components';
 import { UserService } from './services';
+import { CanActivateSignInGuard } from './guards';
 
 import { UsersRoutingModule } from './users-routing.module';
 
@@ -14,6 +15,6 @@ import { UsersRoutingModule } from './users-routing.module';
     UsersRoutingModule
   ],
   declarations: [SignInFormComponent],
-  providers: [UserService],
+  providers: [UserService, CanActivateSignInGuard],
 })
 export class UsersModule { }
