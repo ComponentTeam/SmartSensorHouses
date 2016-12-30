@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SignInFormComponent } from './components';
-import { CanActivateSignInGuard } from './guards';
+import { SignInFormComponent, SignUpFormComponent } from './components';
+import { CanActivateUnauthenticatedUserGuard } from './guards';
 
 
 const usersRoutes: Routes = [
-  { path: 'users/sign-in', component: SignInFormComponent, canActivate: [CanActivateSignInGuard] },
+  {
+    path: 'users/sign-in',
+    component: SignInFormComponent,
+    canActivate: [CanActivateUnauthenticatedUserGuard]
+  },
+  {
+    path: 'users/sign-up',
+    component: SignUpFormComponent,
+    canActivate: [CanActivateUnauthenticatedUserGuard]
+  },
 ];
 
 @NgModule({

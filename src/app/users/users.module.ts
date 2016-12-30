@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { SignInFormComponent } from './components';
+import { SignInFormComponent, SignUpFormComponent } from './components';
 import { AuthService } from '../shared/services';
-import { CanActivateSignInGuard } from './guards';
+import { CanActivateUnauthenticatedUserGuard } from './guards';
 
 import { UsersRoutingModule } from './users-routing.module';
 
@@ -14,7 +14,7 @@ import { UsersRoutingModule } from './users-routing.module';
     ReactiveFormsModule,
     UsersRoutingModule
   ],
-  declarations: [SignInFormComponent],
-  providers: [AuthService, CanActivateSignInGuard],
+  declarations: [SignInFormComponent, SignUpFormComponent],
+  providers: [AuthService, CanActivateUnauthenticatedUserGuard],
 })
 export class UsersModule { }

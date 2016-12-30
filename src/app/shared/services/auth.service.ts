@@ -12,6 +12,10 @@ export class AuthService {
     return this.firebaseAuth.asObservable();
   }
 
+  register(email: string, password: string): firebase.Promise<FirebaseAuthState> {
+    return this.firebaseAuth.createUser({email, password});
+  }
+
   signIn(email: string, password: string): firebase.Promise<FirebaseAuthState> {
     return this.firebaseAuth.login({email, password});
   }

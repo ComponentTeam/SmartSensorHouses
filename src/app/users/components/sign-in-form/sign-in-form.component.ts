@@ -40,13 +40,13 @@ export class SignInFormComponent implements OnInit {
     });
   }
 
-  onSignInFormSubmit(submitEvent) {
+  onSignInFormSubmit() {
     this.formSubmit.emit(this.signInForm);
 
     let formControls = this.signInForm.controls;
     this.authService.signIn(formControls['email'].value, formControls['password'].value)
       .then((data) => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       })
       .catch((error) => {
         this.authError = error.message;

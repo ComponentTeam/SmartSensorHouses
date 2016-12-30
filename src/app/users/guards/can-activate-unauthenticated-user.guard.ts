@@ -9,7 +9,7 @@ import { AuthService } from '../../shared/services';
 
 
 @Injectable()
-export class CanActivateSignInGuard implements CanActivate {
+export class CanActivateUnauthenticatedUserGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): Observable<boolean> {

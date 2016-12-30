@@ -3,6 +3,7 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 
+import { FirebaseAuthState } from 'angularfire2';
 import { AuthService } from './shared/services';
 
 /*
@@ -18,8 +19,8 @@ export class AppComponent {
   private isAuthenticated: boolean;
 
   constructor(private authService: AuthService) {
-    authService.authState.subscribe((state) => {
-      this.isAuthenticated = !!state;
+    authService.authState.subscribe((state: FirebaseAuthState) => {
+      this.isAuthenticated = state !== null;
     });
   }
 
