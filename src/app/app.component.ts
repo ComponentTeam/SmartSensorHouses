@@ -24,7 +24,7 @@ export class AppComponent {
     });
   }
 
-  onSignOutClick(event: MouseEvent) {
+  onSignOutClick() {
     this.authService.signOut();
   }
 
