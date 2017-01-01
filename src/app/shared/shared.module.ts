@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from './services';
 
 @NgModule({
-    imports: [CommonModule, AuthService],
-    exports: [AuthService],
+    imports: [CommonModule],
+    exports: [],
     declarations: [],
     providers: [AuthService],
 })
