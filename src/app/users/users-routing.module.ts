@@ -11,7 +11,7 @@ import {
 import {
   CanActivateAuthenticatedUserGuard,
   CanActivateUnauthenticatedUserGuard
-} from './guards';
+} from '../shared/guards';
 
 
 const usersRoutes: Routes = [
