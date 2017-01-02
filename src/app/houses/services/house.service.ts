@@ -10,21 +10,36 @@ import { House } from '../models';
 
 @Injectable()
 export class HouseService extends AbstractFirebaseService<House> {
+  private userHouseRelationsList: FirebaseListObservable<Object[]>;
 
   constructor(
     protected angularFire: AngularFire,
     protected authService: AuthService
   ) {
     super(angularFire, authService);
+
+    this.userHouseRelationsList = this.angularFire.database
+      .list(`/users/${this.authService.userId}/houses`);
   }
 
   get entityPath(): string {
     return `/houses`;
   }
 
+  create(house: House) {
+    let createdHouse = super.create(house);
+
+    // Set the newly created house to the user
+    this.userHouseRelationsList
+      .$ref
+      .child(createdHouse.key)
+      .set(true);
+
+    return createdHouse;
+  }
+
   getUserHouses(): Observable<House[]> {
-    return this.angularFire.database
-      .list(`/users/${this.authService.userId}/houses`)
+    return this.userHouseRelationsList
       .map((houseRelations) => {
         let userHouses = [];
 

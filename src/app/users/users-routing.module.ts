@@ -5,13 +5,11 @@ import {
   SignInFormComponent,
   SignUpFormComponent,
 } from './components';
-// import {
-//     HouseListComponent,
-// } from '../houses/components';
+
 import {
   CanActivateAuthenticatedUserGuard,
   CanActivateUnauthenticatedUserGuard
-} from './guards';
+} from '../shared/guards';
 
 
 const usersRoutes: Routes = [
@@ -24,12 +22,7 @@ const usersRoutes: Routes = [
     path: 'users/sign-up',
     component: SignUpFormComponent,
     canActivate: [CanActivateUnauthenticatedUserGuard]
-  },
-  // {
-  //   path: 'houses',
-  //   component: HouseListComponent,
-  //   canActivate: [CanActivateAuthenticatedUserGuard]
-  // },
+  }
 ];
 
 @NgModule({

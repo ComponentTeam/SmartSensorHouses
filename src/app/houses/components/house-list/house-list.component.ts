@@ -4,8 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { HouseService } from '../../services';
 import { House } from '../../models';
 
+
 @Component({
-  selector: 'house',
+  selector: 'houses-list',
   templateUrl: './house-list.component.html',
 })
 export class HouseListComponent {

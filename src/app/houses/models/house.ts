@@ -5,7 +5,7 @@ export class House implements IEntity {
     public name: string,
     public description: string,
     public location: string,
-    public controlNumber: number,
+    public controlNumber?: number,
     public verificationCode?: string,
     public $key?: string
   ) { }

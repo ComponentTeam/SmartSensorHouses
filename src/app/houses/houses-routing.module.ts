@@ -2,20 +2,25 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
-    HouseListComponent
+    HouseListComponent,
+    HouseCreateComponent
 } from './components';
  import {
    CanActivateAuthenticatedUserGuard,
    CanActivateUnauthenticatedUserGuard
- } from '../users/guards';
+ } from '../shared/guards';
 
 
 const usersRoutes: Routes = [
   {
-    path: 'houses/house-list',
+    path: 'houses/list',
     component: HouseListComponent,
-    //canActivate: [CanActivateAuthenticatedUserGuard]
-    //canActivate: [CanActivateAuthenticatedUserGuard]
+    canActivate: [CanActivateAuthenticatedUserGuard]
+  },
+  {
+    path: 'houses/create',
+    component: HouseCreateComponent,
+    canActivate: [CanActivateAuthenticatedUserGuard]
   },
 ];
 

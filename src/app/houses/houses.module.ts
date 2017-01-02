@@ -7,7 +7,11 @@ import {
   CanActivateAuthenticatedUserGuard,
   CanActivateUnauthenticatedUserGuard
 } from '../shared/guards';
-import { HouseListComponent } from './components';
+import {
+  HouseListComponent,
+  HouseFormComponent,
+  HouseCreateComponent
+} from './components';
 import { HouseService } from './services';
 
 import { HousesRoutingModule } from './houses-routing.module';
@@ -20,12 +24,14 @@ import { HousesRoutingModule } from './houses-routing.module';
     HousesRoutingModule
   ],
   declarations: [
-    HouseListComponent
+    HouseListComponent,
+    HouseFormComponent,
+    HouseCreateComponent
   ],
   providers: [
     HouseService,
-    // CanActivateAuthenticatedUserGuard,
-    // CanActivateUnauthenticatedUserGuard
+    CanActivateAuthenticatedUserGuard,
+    CanActivateUnauthenticatedUserGuard
   ],
 })
 export class HousesModule { }
