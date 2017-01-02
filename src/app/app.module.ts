@@ -17,6 +17,7 @@ import { FirebaseModule } from './firebase/firebase.module';
 import { NotFoundModule } from './not-found/not-found-module';
 import { HomeModule } from './home/home.module';
 import { UsersModule } from './users/users.module';
+import { HousesModule } from './houses/houses.module';
 
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ const APP_PROVIDERS = [
     FirebaseModule,
     HomeModule,
     UsersModule,
+    HousesModule,
     NotFoundModule,
     AppRoutingModule
   ],

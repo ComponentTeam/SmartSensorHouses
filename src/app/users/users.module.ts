@@ -6,13 +6,13 @@ import { SharedModule } from '../shared/shared.module';
 import {
   CanActivateAuthenticatedUserGuard,
   CanActivateUnauthenticatedUserGuard
-} from './guards';
+} from '../shared/guards';
 import {
   SignInFormComponent,
-  SignUpFormComponent,
-  HouseListComponent
+  SignUpFormComponent
 } from './components';
-import { HouseService } from './services';
+//import { HouseListComponent } from '../houses/components';
+//import { HouseService } from '../houses/services';
 
 import { UsersRoutingModule } from './users-routing.module';
 
@@ -26,10 +26,10 @@ import { UsersRoutingModule } from './users-routing.module';
   declarations: [
     SignInFormComponent,
     SignUpFormComponent,
-    HouseListComponent
+    //HouseListComponent
   ],
   providers: [
-    HouseService,
+    //HouseService,
     CanActivateAuthenticatedUserGuard,
     CanActivateUnauthenticatedUserGuard
   ],

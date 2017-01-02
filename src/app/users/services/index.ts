@@ -1,1 +1,1 @@
-export * from './house.service';
+//export * from './house.service'; //moved to /app/houses

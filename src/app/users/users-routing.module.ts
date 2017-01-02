@@ -4,8 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   SignInFormComponent,
   SignUpFormComponent,
-  HouseListComponent
 } from './components';
+// import {
+//     HouseListComponent,
+// } from '../houses/components';
 import {
   CanActivateAuthenticatedUserGuard,
   CanActivateUnauthenticatedUserGuard
@@ -23,11 +25,11 @@ const usersRoutes: Routes = [
     component: SignUpFormComponent,
     canActivate: [CanActivateUnauthenticatedUserGuard]
   },
-  {
-    path: 'users/houses',
-    component: HouseListComponent,
-    canActivate: [CanActivateAuthenticatedUserGuard]
-  },
+  // {
+  //   path: 'houses',
+  //   component: HouseListComponent,
+  //   canActivate: [CanActivateAuthenticatedUserGuard]
+  // },
 ];
 
 @NgModule({
