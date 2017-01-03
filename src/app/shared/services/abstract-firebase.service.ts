@@ -27,7 +27,7 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
   }
 
   update(entity: T, changes: Object): firebase.Promise<any> {
-    return this.list.$ref.child(entity.$key).set(changes);
+    return this.list.update(entity.$key, changes);
   }
 
   delete(entity: T): firebase.Promise<any> {
