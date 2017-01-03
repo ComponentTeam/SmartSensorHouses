@@ -7,15 +7,14 @@ import {
  import {
    CanActivateAuthenticatedUserGuard,
    CanActivateUnauthenticatedUserGuard
- } from '../users/guards';
+ } from '../shared/guards';
 
 
 const usersRoutes: Routes = [
   {
     path: 'houses/house-list',
     component: HouseListComponent,
-    //canActivate: [CanActivateAuthenticatedUserGuard]
-    //canActivate: [CanActivateAuthenticatedUserGuard]
+    canActivate: [CanActivateAuthenticatedUserGuard]
   },
 ];
 
