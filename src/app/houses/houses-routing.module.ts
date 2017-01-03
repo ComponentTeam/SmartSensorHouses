@@ -16,6 +16,7 @@ const usersRoutes: Routes = [
     path: 'houses/list',
     component: HouseListComponent,
     canActivate: [CanActivateAuthenticatedUserGuard]
+
   },
   {
     path: 'houses/create',
