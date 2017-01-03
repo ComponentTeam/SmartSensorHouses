@@ -2,14 +2,36 @@
   <div class="row-md-12">
     <div class="row">
 
-      <div *ngFor="let house of userHouses | async" class="col-md-4 col-sm-4 col-xs-6">
+      <div *ngFor="let house of userHouses" class="col-md-4 col-sm-4 col-xs-6">
         <div class="card card-block text-center">
+
           <h4 class="card-title">{{house.name}}</h4>
+
+          <div class="clearfix">
+            <div class="pull-right">
+              <a [routerLink]="['/houses/update/', house.$key]">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </a>
+              <span class="margin-right-10"></span>
+              <a (click)="onHouseRemoveButtonClick(house)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </div>
+          </div>
+
           <p class="card-text">{{house.description}}</p>
           <a href="/rooms/room-list/{{house.$key}}" class="btn btn-primary">View for more details</a>
         </div>
       </div>
 
     </div>
+
+    <house-remove
+        (houseRemoveModalInit)="onModalHouseRemoveInit($event)"
+        [removeHouse]="selectedHouseForRemoval"
+        (houseRemoveButtonPressed)="onModalHouseRemoveButtonPressed($event)">
+    </house-remove>
+
+
   </div>
 </div>
