@@ -28,4 +28,4 @@ import { RoomsRoutingModule } from './rooms-routing.module';
     CanActivateUnauthenticatedUserGuard
   ],
 })
-export class HousesModule { }
+export class RoomsModule { }
