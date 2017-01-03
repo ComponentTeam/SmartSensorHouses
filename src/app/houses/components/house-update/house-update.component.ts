@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { FirebaseObjectObservable } from 'angularfire2';
 
@@ -19,8 +19,8 @@ export class HouseUpdateComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    activatedRoute.params.subscribe(params => {
-      this.house = this.houseService.get(params['houseId'])
+    activatedRoute.params.subscribe((params: Params) => {
+      this.house = this.houseService.get(params['houseId']);
     });
   }
 
@@ -29,7 +29,7 @@ export class HouseUpdateComponent {
       this.houseService
         .update(initialHouseForUpdate, updatedHouse)
         .then((result) => {
-          window.location.href = 'http://localhost:3000/houses/list';
+          this.router.navigate(['/houses/list']);
         });
     });
   }

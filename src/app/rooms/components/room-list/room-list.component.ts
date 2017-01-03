@@ -1,5 +1,4 @@
-import { Component} from '@angular/core';
-import {  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -19,9 +18,7 @@ export class RoomListComponent implements OnInit {
     private service: RoomService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-    //this.houseRooms = this.service.getUserRooms('myHome');
-  }
+  ) { }
 
   ngOnInit() {
     this.houseRooms = this.route.params

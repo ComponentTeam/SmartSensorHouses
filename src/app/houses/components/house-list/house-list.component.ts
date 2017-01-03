@@ -8,19 +8,16 @@ import { Modal } from 'ng2-modal';
 
 
 @Component({
-  selector: 'house',
+  selector: 'houses-list',
   templateUrl: './house-list.component.html',
 })
 export class HouseListComponent {
-  userHouses: House[];
+  userHouses: Observable<House[]>;
   removeHouseModal: Modal;
   selectedHouseForRemoval: House;
 
   constructor(private houseService: HouseService) {
-    this.houseService.getUserHouses()
-      .subscribe((houses: House[]) => {
-        this.userHouses = houses;
-      });
+    this.userHouses = this.houseService.getUserHouses();
   }
 
   onHouseRemoveButtonClick(house: House) {

@@ -38,8 +38,8 @@ import { HousesRoutingModule } from './houses-routing.module';
   ],
   providers: [
     HouseService,
-    // CanActivateAuthenticatedUserGuard,
-    // CanActivateUnauthenticatedUserGuard
+    CanActivateAuthenticatedUserGuard,
+    CanActivateUnauthenticatedUserGuard
   ],
 })
 export class HousesModule { }

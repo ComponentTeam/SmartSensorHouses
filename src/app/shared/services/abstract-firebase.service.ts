@@ -18,7 +18,11 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
     this.list = angularFire.database.list(this.entityPath)
   }
 
-  create(entity: T): firebase.Promise<any> {
+  get(entityId: string) {
+    return this.angularFire.database.object(`${this.entityPath}/${entityId}`);
+  }
+
+  create(entity: T): firebase.database.ThenableReference {
     return this.list.push(entity);
   }
 

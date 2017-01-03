@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import {
+  AngularFire,
+  FirebaseListObservable,
+  FirebaseObjectObservable
+} from 'angularfire2';
 
 import { AuthService, AbstractFirebaseService } from '../../shared/services';
 import { House } from '../models';
@@ -50,8 +54,7 @@ export class HouseService extends AbstractFirebaseService<House> {
   }
 
   getUserHouses(): Observable<House[]> {
-    return this.angularFire.database
-      .list(`/users/${this.authService.userId}/houses`)
+    return this.userHouseRelationsList
       .map((houseRelations) => {
         let userHouses = [];
 

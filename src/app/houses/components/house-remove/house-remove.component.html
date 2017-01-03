@@ -1,0 +1,12 @@
+<modal #houseRemoveModal>
+  <modal-header>
+    <h2>Remove house</h2>
+  </modal-header>
+  <modal-content>
+    Are you sure you want to remove <strong>{{removeHouse?.name}}</strong>?
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-danger" (click)="onRemoveButtonClick()">Remove</button>
+    <button class="btn btn-primary" (click)="houseRemoveModal.close()">Cancel</button>
+  </modal-footer>
+</modal>

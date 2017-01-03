@@ -17,11 +17,6 @@ const roomsRoutes: Routes = [
     component: RoomListComponent,
     canActivate: [CanActivateAuthenticatedUserGuard]
   },
-  // {
-  //   path: 'rooms/room-list/:houseId',
-  //   component: RoomListComponent,
-  //   canActivate: [CanActivateAuthenticatedUserGuard]
-  // },
 ];
 
 @NgModule({
