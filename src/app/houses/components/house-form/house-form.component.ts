@@ -12,6 +12,7 @@ import {
   FormBuilder,
   Validators
 } from '@angular/forms';
+import { FirebaseObjectObservable } from 'angularfire2';
 
 import { House } from '../../models';
 
@@ -21,7 +22,7 @@ import { House } from '../../models';
   templateUrl: './house-form.component.html',
 })
 export class HouseFormComponent implements OnInit {
-  @Input() initiate: House;
+  @Input() initiate: FirebaseObjectObservable<House>;
   @Input() formHeading: string = 'House form';
   @Input() formButtonTitle: string = 'Submit';
   @Output() houseFormSubmit: EventEmitter<House>;
@@ -38,6 +39,8 @@ export class HouseFormComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(6)]],
       location: ['', [Validators.required, Validators.minLength(4)]],
     });
+
+    this.populateFormWithInitialValues(this.initiate, this.createHouseForm);
   }
 
   onCreateHouseFormSubmit(event: any) {
@@ -50,6 +53,8 @@ export class HouseFormComponent implements OnInit {
       controls['location'].value
     );
 
+    this.filterUndefinedValues(house);
+
     this.houseFormSubmit.emit(house);
   }
 
@@ -57,4 +62,28 @@ export class HouseFormComponent implements OnInit {
     let control: FormControl = <FormControl>this.createHouseForm.controls[formField];
     return control.touched && control.invalid;
   }
+
+  private populateFormWithInitialValues(
+    houseObject: FirebaseObjectObservable<House>,
+    form: FormGroup
+  ) {
+    if (houseObject !== undefined) {
+      houseObject.subscribe((houseForUpdate: House) => {
+        // tslint:disable-next-line:forin
+        for (let key in form.controls) {
+          let formControl: FormControl = <FormControl>form.controls[key];
+          formControl.setValue(houseForUpdate[key]);
+        }
+      });
+    }
+  }
+
+  private filterUndefinedValues(house: Object) {
+    for (let key in house) {
+      if (!house[key]) {
+        delete house[key]
+      }
+    }
+  }
+
 }

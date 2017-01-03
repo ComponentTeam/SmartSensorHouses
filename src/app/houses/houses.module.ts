@@ -10,7 +10,8 @@ import {
 import {
   HouseListComponent,
   HouseFormComponent,
-  HouseCreateComponent
+  HouseCreateComponent,
+  HouseUpdateComponent
 } from './components';
 import { HouseService } from './services';
 
@@ -26,7 +27,8 @@ import { HousesRoutingModule } from './houses-routing.module';
   declarations: [
     HouseListComponent,
     HouseFormComponent,
-    HouseCreateComponent
+    HouseCreateComponent,
+    HouseUpdateComponent
   ],
   providers: [
     HouseService,

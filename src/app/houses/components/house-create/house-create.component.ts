@@ -17,20 +17,11 @@ export class HouseCreateComponent {
   ) { }
 
   onHouseFormSubmit(house: House) {
-    this.filterUndefinedValues(house);
     this.houseService
       .create(house)
       .then((result) => {
         this.router.navigate(['/houses/list']);
       });
-  }
-
-  private filterUndefinedValues(house: Object) {
-    for (let key in house) {
-      if (!house[key]) {
-        delete house[key]
-      }
-    }
   }
 
 }

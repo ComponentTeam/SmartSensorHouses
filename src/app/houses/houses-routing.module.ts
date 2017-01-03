@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {
     HouseListComponent,
-    HouseCreateComponent
+    HouseCreateComponent,
+    HouseUpdateComponent
 } from './components';
  import {
    CanActivateAuthenticatedUserGuard,
@@ -21,6 +22,11 @@ const usersRoutes: Routes = [
   {
     path: 'houses/create',
     component: HouseCreateComponent,
+    canActivate: [CanActivateAuthenticatedUserGuard]
+  },
+  {
+    path: 'houses/update/:houseId',
+    component: HouseUpdateComponent,
     canActivate: [CanActivateAuthenticatedUserGuard]
   },
 ];
