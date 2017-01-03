@@ -13,7 +13,9 @@
         <li routerLinkActive="active">
           <a routerLink="/home">Home</a>
         </li>
-        <li><a href="#">About</a></li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="/houses/list">Houses</a>
+        </li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Stuff</a></li>
       </ul>
@@ -46,7 +48,7 @@
   <router-outlet></router-outlet>
 </main>
 
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center margin-top-20">
   <div class="wrapper">
     <span>Copyright © 2017. All Rights Reserved.</span>
     <span>Component5 Team</span>

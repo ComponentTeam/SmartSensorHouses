@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
-    HouseListComponent
+    HouseListComponent,
+    HouseCreateComponent,
+    HouseUpdateComponent
 } from './components';
  import {
    CanActivateAuthenticatedUserGuard,
@@ -12,8 +14,19 @@ import {
 
 const usersRoutes: Routes = [
   {
-    path: 'houses/house-list',
+    path: 'houses/list',
     component: HouseListComponent,
+    canActivate: [CanActivateAuthenticatedUserGuard]
+
+  },
+  {
+    path: 'houses/create',
+    component: HouseCreateComponent,
+    canActivate: [CanActivateAuthenticatedUserGuard]
+  },
+  {
+    path: 'houses/update/:houseId',
+    component: HouseUpdateComponent,
     canActivate: [CanActivateAuthenticatedUserGuard]
   },
 ];

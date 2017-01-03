@@ -1,0 +1,44 @@
+<form class="card card-block text-center text-center"
+      [formGroup]="createHouseForm"
+      (ngSubmit)="onCreateHouseFormSubmit($event)">
+  <div class="text-center">
+    <h2>{{formHeading}}</h2>
+  </div>
+  <div class="form-group"
+        [class.has-error]="hasError('name')">
+    <label for="house-name" class="sr-only">Name</label>
+    <input type="text"
+          id="house-name"
+          class="form-control"
+          placeholder="Name"
+          formControlName="name"
+          required>
+  </div>
+  <div class="form-group"
+        [class.has-error]="hasError('description')">
+    <label for="house-description" class="sr-only">Description</label>
+    <input type="text"
+          id="house-description"
+          class="form-control"
+          placeholder="Description"
+          formControlName="description"
+          required>
+  </div>
+  <div class="form-group"
+        [class.has-error]="hasError('location')">
+    <label for="house-location" class="sr-only">Location</label>
+    <input type="text"
+          id="house-location"
+          class="form-control"
+          placeholder="Location"
+          formControlName="location"
+          required>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-lg btn-primary"
+            type="submit"
+            [disabled]="createHouseForm.invalid">
+      {{formButtonTitle}}
+    </button>
+  </div>
+</form>

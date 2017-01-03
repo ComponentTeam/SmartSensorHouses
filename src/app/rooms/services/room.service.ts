@@ -18,30 +18,29 @@ export class RoomService extends AbstractFirebaseService<Room> {
   }
 
   get housesPath(): string {
-    return `/houses`;
+    return '/houses';
   }
 
   get entityPath(): string {
-    return `/rooms`;
+    return '/rooms';
   }
 
   getUserRooms(queryHouseId): Observable<Room[]> {
     return this.angularFire.database
-      .list(`/rooms`,{
-        query:{
+      .list('/rooms', {
+        query: {
           orderByChild: 'houseId',
           equalTo: queryHouseId
         }
       })
       .map((roomRelations) => {
-        let userHouses = [];
         let houseRooms = [];
 
         roomRelations.forEach((room) => {
-          houseRooms.push(room);            
+          houseRooms.push(room);
         });
 
         return houseRooms;
-      })
+      });
   };
 }
