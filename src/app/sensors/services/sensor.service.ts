@@ -5,11 +5,11 @@ import 'rxjs/add/operator/map';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 import { AuthService, AbstractFirebaseService } from '../../shared/services';
-import { Room } from '../models';
+import { Sensor } from '../models';
 
 
 @Injectable()
-export class RoomService extends AbstractFirebaseService<Room> {
+export class SensorService extends AbstractFirebaseService<Sensor> {
   constructor(
     protected angularFire: AngularFire,
     protected authService: AuthService
@@ -18,15 +18,15 @@ export class RoomService extends AbstractFirebaseService<Room> {
   }
 
   get entityPath(): string {
-    return '/rooms';
+    return '/sensors';
   }
 
-  getHouseRooms(queryHouseId): Observable<Room[]> {
-    let houseRooms = [];
+  getRoomSensors(queryRoomId): Observable<Sensor[]> {
+    let roomSensors = [];
     return this.getList({
         query: {
-          orderByChild: 'houseId',
-          equalTo: queryHouseId
+          orderByChild: 'roomId',
+          equalTo: queryRoomId
         }
       });
   };

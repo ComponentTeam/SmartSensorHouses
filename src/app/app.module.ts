@@ -20,6 +20,7 @@ import { ContactModule } from './contact/contact.module';
 import { UsersModule } from './users/users.module';
 import { HousesModule } from './houses/houses.module';
 import { RoomsModule } from './rooms/rooms.module';
+import { SensorsModule } from './sensors/sensors.module';
 
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -49,6 +50,7 @@ const APP_PROVIDERS = [
     UsersModule,
     HousesModule,
     RoomsModule,
+    SensorsModule,
     NotFoundModule,
     AppRoutingModule
   ],

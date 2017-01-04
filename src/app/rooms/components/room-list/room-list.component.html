@@ -6,7 +6,7 @@
         <div class="card card-block text-center">
           <h4 class="card-title">{{room.name}}</h4>
           <p class="card-text">{{room.description}}</p>
-          <a [routerLink]="['/sensors/sensor-list/', house.$key]" class="btn btn-primary">View sensors</a>
+          <a [routerLink]="['/sensors/sensor-list/', room.$key]" class="btn btn-primary">View sensors</a>
         </div>
       </div>
 
