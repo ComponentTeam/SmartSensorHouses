@@ -1,5 +1,11 @@
-<house-form [initiate]="house"
-            formHeading="Update existing House"
-            formButtonTitle="Update house"
-            (houseFormSubmit)="onHouseFormSubmit($event)">
-</house-form>
+<div class="container">
+  <div class="col-md-12">
+    <div class="row">
+      <house-form [initiate]="house"
+                  formHeading="Update an existing House"
+                  formButtonTitle="Update house"
+                  (houseFormSubmit)="onHouseFormSubmit($event)">
+      </house-form>
+    </div>
+  </div>
+</div>
