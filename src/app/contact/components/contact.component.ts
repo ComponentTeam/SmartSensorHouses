@@ -7,8 +7,11 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { FirebaseAuthState } from 'angularfire2';
+
 import { ToasterService } from 'angular2-toaster';
 import { ContactService } from '../services';
+import { AuthService } from '../../shared/services';
 import { Contact } from '../models';
 
 
@@ -24,6 +27,7 @@ export class ContactComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private toasterService: ToasterService,
+    private authService: AuthService,
     private contactService: ContactService
   ) { }
 
@@ -33,6 +37,12 @@ export class ContactComponent implements OnInit {
       lastName: ['', [Validators.required, Validators.minLength(3)]],
       contactEmail: ['', [Validators.required]],
       question: ['', [Validators.required, Validators.minLength(10)]],
+    });
+
+    this.authService.authState.subscribe((state: FirebaseAuthState) => {
+      if (state !== null) {
+        this.contactForm.controls['contactEmail'].setValue(state.auth.email);
+      }
     });
   }
 
