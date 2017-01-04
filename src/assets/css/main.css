@@ -35,6 +35,15 @@ footer {
   }
 }
 
+.jumbotron {
+    margin-bottom: 0;
+}
+
+.jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
 .form-signin {
   max-width: 90%;
   width: 700px;

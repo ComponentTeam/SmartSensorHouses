@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="row">
+      <div class="warning wrapper contact-warnings"></div>
+
+      <div class="contact-form">
+        <form class="card card-block text-center"
+              (ngSubmit)="onContactFormSubmit()"
+              [formGroup]="contactForm">
+
+          <h2>Ask us a question</h2> <br>
+
+          <div class="form-group"
+                [class.has-error]="hasError('firstName')">
+            <label for="contact-first-name" class="sr-only">First name</label>
+            <input type="text"
+                   id="contact-first-name"
+                   class="form-control"
+                   placeholder="First name"
+                   formControlName="firstName"
+                   required>
+          </div>
+          <div class="form-group"
+                [class.has-error]="hasError('lastName')">
+            <label for="contact-last-name" class="sr-only">Last name</label>
+            <input type="text"
+                   id="contact-last-name"
+                   class="form-control"
+                   placeholder="Last name"
+                   formControlName="lastName"
+                   required>
+          </div>
+          <div class="form-group"
+                [class.has-error]="hasError('contactEmail')">
+            <label for="contact-feedback-email" class="sr-only">Feedback email</label>
+            <input type="email"
+                   id="contact-feedback-email"
+                   class="form-control"
+                   placeholder="Feedback email"
+                   formControlName="contactEmail"
+                   required>
+          </div>
+          <div class="form-group"
+                [class.has-error]="hasError('question')">
+            <label for="contact-qustion" class="sr-only">Question</label>
+            <textarea id="contact-question"
+                      class="form-control"
+                      placeholder="Type your question here"
+                      formControlName="question"
+                      cols="30"
+                      rows="10"
+                      required>
+
+            </textarea>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-lg btn-primary"
+                    type="submit"
+                    [disabled]="contactForm.invalid">
+              Send your question
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
