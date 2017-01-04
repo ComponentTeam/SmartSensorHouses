@@ -16,6 +16,7 @@ import { ToasterModule } from 'angular2-toaster';
 import { FirebaseModule } from './firebase/firebase.module';
 import { NotFoundModule } from './not-found/not-found-module';
 import { HomeModule } from './home/home.module';
+import { ContactModule } from './contact/contact.module';
 import { UsersModule } from './users/users.module';
 import { HousesModule } from './houses/houses.module';
 import { RoomsModule } from './rooms/rooms.module';
@@ -44,6 +45,7 @@ const APP_PROVIDERS = [
     ToasterModule,
     FirebaseModule,
     HomeModule,
+    ContactModule,
     UsersModule,
     HousesModule,
     RoomsModule,
