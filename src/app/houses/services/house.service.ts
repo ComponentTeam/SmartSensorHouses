@@ -40,6 +40,7 @@ export class HouseService extends AbstractFirebaseService<House> {
     // Set the newly created house to the user
     this.userHouseRelationsList
       .$ref
+      .ref
       .child(createdHouse['key'])
       .set(true);
 

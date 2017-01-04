@@ -27,6 +27,7 @@
 
           <h4 class="card-title">{{house.name}}</h4>
           <p class="card-text">{{house.description}}</p>
+          <p class="card-text">{{house.location}}</p>
           <a [routerLink]="['/rooms/room-list/', house.$key]" class="btn btn-primary">View rooms</a>
         </div>
       </div>

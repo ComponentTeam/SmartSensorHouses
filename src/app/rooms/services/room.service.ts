@@ -26,21 +26,22 @@ export class RoomService extends AbstractFirebaseService<Room> {
   }
 
   getUserRooms(queryHouseId): Observable<Room[]> {
-    return this.angularFire.database
-      .list('/rooms', {
+    let houseRooms = [];
+    return this.getList({
         query: {
           orderByChild: 'houseId',
           equalTo: queryHouseId
         }
-      })
-      .map((roomRelations) => {
-        let houseRooms = [];
-
-        roomRelations.forEach((room) => {
-          houseRooms.push(room);
-        });
-
-        return houseRooms;
       });
+      // .subscribe((rooms) => houseRooms.push(rooms));
+      // // .map((roomRelations) => {
+      // //   let houseRooms = [];
+
+      // //   roomRelations.forEach((room) => {
+      // //     houseRooms.push(room);
+      // //   });
+
+      //   return houseRooms;
+      // });
   };
 }
