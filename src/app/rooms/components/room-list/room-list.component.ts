@@ -24,7 +24,7 @@ export class RoomListComponent implements OnInit {
     this.houseRooms = this.route.params
       .switchMap((params: Params) => {
         this.userHouseId = params['houseId'];
-        return this.service.getUserRooms(this.userHouseId);
+        return this.service.getHouseRooms(this.userHouseId);
       });
   }
 }

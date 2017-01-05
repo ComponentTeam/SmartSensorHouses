@@ -20,6 +20,7 @@ import { ContactModule } from './contact/contact.module';
 import { UsersModule } from './users/users.module';
 import { HousesModule } from './houses/houses.module';
 import { RoomsModule } from './rooms/rooms.module';
+import { SensorsModule } from './sensors/sensors.module';
 
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -34,7 +35,7 @@ const APP_PROVIDERS = [
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent
   ],
@@ -49,6 +50,7 @@ const APP_PROVIDERS = [
     UsersModule,
     HousesModule,
     RoomsModule,
+    SensorsModule,
     NotFoundModule,
     AppRoutingModule
   ],

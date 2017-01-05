@@ -7,6 +7,7 @@ export class Sensor implements IEntity {
     public isRegistered: boolean,
     public controlNumber: number,
     public units: string,
+    public values: [any],
     public $key?: string
   ) { }
 }

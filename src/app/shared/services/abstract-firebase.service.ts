@@ -22,7 +22,7 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
     return this.angularFire.database.object(`${this.entityPath}/${entityId}`);
   }
 
-  getList(options: Object) {
+  getList(options: Object = null) {
     if (options) {
       return this.angularFire.database.list(`${this.entityPath}`, options);
     }else{
