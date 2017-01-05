@@ -8,10 +8,11 @@ export class Last10DateKeysPipe implements PipeTransform {
       let parsedDate = Date.parse(key);
       keys.push({ date: parsedDate, value: dateValues[key] });
     }
+
     keys.sort(this.compareByDate);
-    if(keys.length>10){
-      return keys.slice(keys.length-10);
-    }else{
+    if (keys.length > 10){
+      return keys.slice(keys.length - 10);
+    } else{
       return keys;
     }
   }
@@ -19,10 +20,15 @@ export class Last10DateKeysPipe implements PipeTransform {
   compareByDate(a, b) {
     let aDate = new Date(a.date);
     let bDate = new Date(b.date);
-    if (aDate < bDate)
+
+    if (aDate < bDate) {
       return -1;
-    if (aDate > bDate)
+    }
+
+    if (aDate > bDate) {
       return 1;
+    }
+
     return 0;
   }
 }
