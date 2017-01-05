@@ -60,8 +60,7 @@ export class HouseService extends AbstractFirebaseService<House> {
         let userHouses = [];
 
         houseRelations.forEach((houseRelation) => {
-          this.angularFire.database
-            .object(`${this.entityPath}/${houseRelation.$key}`)
+          this.get(houseRelation.$key)
             .subscribe((house) => userHouses.push(house));
         });
 

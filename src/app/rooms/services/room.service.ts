@@ -23,7 +23,7 @@ export class RoomService extends AbstractFirebaseService<Room> {
 
   getHouseRooms(queryHouseId): Observable<Room[]> {
     let houseRooms = [];
-    
+
     return this.getList({
         query: {
           orderByChild: 'houseId',

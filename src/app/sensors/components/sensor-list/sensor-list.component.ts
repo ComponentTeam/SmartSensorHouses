@@ -1,4 +1,4 @@
-import { Component, OnInit ,Pipe,PipeTransform} from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -34,7 +34,6 @@ export class SensorListComponent implements OnInit {
   }
 
   hideValues() {
-
     this.toShowValues = false;
   }
 }
