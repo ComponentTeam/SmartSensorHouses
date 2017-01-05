@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Pipe,PipeTransform} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -13,6 +13,7 @@ import { Sensor } from '../../models';
 export class SensorListComponent implements OnInit {
   roomSensors: Observable<Sensor[]>;
   roomId: string;
+  toShowValues: boolean = false;
 
   constructor(
     private service: SensorService,
@@ -26,5 +27,14 @@ export class SensorListComponent implements OnInit {
         this.roomId = params['roomId'];
         return this.service.getRoomSensors(this.roomId);
       });
+  }
+
+  showValues() {
+    this.toShowValues = true;
+  }
+
+  hideValues() {
+
+    this.toShowValues = false;
   }
 }

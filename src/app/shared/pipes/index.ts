@@ -1,3 +1,1 @@
-/**
- * This barrel file exports all shared pipes
- */
+export * from './last10DateKeys';

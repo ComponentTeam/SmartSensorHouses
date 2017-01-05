@@ -11,6 +11,7 @@ import { SensorListComponent } from './components';
 import { SensorService } from './services';
 
 import { SensorsRoutingModule } from './sensors-routing.module';
+import { Last10DateKeysPipe } from '../shared/pipes';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SensorsRoutingModule } from './sensors-routing.module';
    SensorsRoutingModule
   ],
   declarations: [
-    SensorListComponent
+    SensorListComponent,
+    Last10DateKeysPipe
   ],
   providers: [
     SensorService,

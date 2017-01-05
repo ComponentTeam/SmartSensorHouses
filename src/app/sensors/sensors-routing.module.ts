@@ -14,7 +14,7 @@ const sensorsRoutes: Routes = [
     path: 'sensors/sensor-list/:roomId',
     component: SensorListComponent,
     canActivate: [CanActivateAuthenticatedUserGuard]
-  },
+  }
 ];
 
 @NgModule({

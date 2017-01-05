@@ -12,7 +12,7 @@ import { Room } from '../../models';
 })
 export class RoomListComponent implements OnInit {
   houseRooms: Observable<Room[]>;
-  houseId: string;
+  userHouseId: string;
 
   constructor(
     private service: RoomService,
@@ -23,8 +23,8 @@ export class RoomListComponent implements OnInit {
   ngOnInit() {
     this.houseRooms = this.route.params
       .switchMap((params: Params) => {
-        this.houseId = params['houseId'];
-        return this.service.getHouseRooms(this.houseId);
+        this.userHouseId = params['houseId'];
+        return this.service.getHouseRooms(this.userHouseId);
       });
   }
 }

@@ -2,12 +2,21 @@
   <div class="row-md-12">
     <div class="row">
 
-      <div *ngFor="let sensor of roomSensors | async" class="col-md-4 col-sm-4 col-xs-6">
+      <div *ngFor="let sensor of roomSensors | async; let i = index" class="col-md-4 col-sm-4 col-xs-6">
         <div class="card card-block text-center">
           <h4 class="card-title">{{sensor.name}}</h4>
           <p class="card-text">{{sensor.description}}</p>
-          <p class="card-text">Sensor units: {{sensor.units}}</p>
-          <!--<a [routerLink]="['/sensors/sensor-list/', house.$key]" class="btn btn-primary">View sensors</a>-->
+          <p class='card-block text-left'>Last 10 values:</p>
+          <table class="table table-bordered">
+            <tr class="tr">
+              <th class="th">Date:</th>
+              <th class="th">Value:</th>
+            </tr>
+            <tr *ngFor="let sensorValue of sensor.values | last10DateKeys" class="tr">
+              <td class="td">{{sensorValue.date | date:'medium'}}</td>
+              <td class="td">{{sensorValue.value}} {{sensor.units}}</td>
+            </tr>
+          </table>
         </div>
       </div>
 
